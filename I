@@ -228,7 +228,7 @@
   <!-- Payment Modal -->
   <div class="modal-overlay" id="modalOverlay"></div>
   <div class="modal" id="paymentModal">
-    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <button class="close-btn" onclick="closeModal()">×</button>
     <h3>Send payment</h3>
     <p><strong>Number:</strong> <span id="payNumber"></span></p>
     <p><strong>Operator:</strong> <span id="payOperator"></span></p>
@@ -317,53 +317,4 @@
         };
         
         window.shareOnWhatsApp = () => {
-            const websiteLink = window.location.href;
-            const shareText = `🔋 Cheapest Mobile Recharge Website 🔋
-
-Looking for the cheapest mobile recharge website?
-Compare prices, 💰 cashback offers, and ⚡ instant recharge services all in one place!
-
-Our platform helps you find the best prepaid and postpaid recharge deals from top providers like 📱 Jio, 📶 Airtel, 📡 Vi, and 🛰️ BSNL.
-
-✨ What We Offer:
-✅ Instant recharge 🔁
-✅ Lowest prices guaranteed 💸
-✅ Secure payment options 🔐
-
-🔗 Visit now and start saving on every recharge! 🚀
-${websiteLink}`;
-            const msg = encodeURIComponent(shareText);
-            window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
-            shareOverlay.classList.remove('active');
-            showToast("✅ Thank you for sharing!");
-        };
-
-        const setButtonLoading = (isLoading) => { rechargeBtn.disabled = isLoading; btnText.style.display = isLoading ? 'none' : 'block'; spinner.style.display = isLoading ? 'block' : 'none'; };
-        const updateRandomComment = () => { const idx = Math.floor(Math.random() * randomComments.length); commentBox.style.opacity = 0; setTimeout(() => { commentBox.textContent = randomComments[idx]; commentBox.style.opacity = 1; }, 500); };
-
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const number = mobileInput.value.trim(), operator = document.querySelector('input[name="network"]:checked').value, amount = amountInput.value;
-            if (!/^(\+91)?[6-9]\d{9}$/.test(number)) { showToast("❌ Invalid Indian mobile number."); return; }
-            if (!amount || amount <= 0) { showToast("❌ Please enter a valid amount."); return; }
-            setButtonLoading(true);
-            setTimeout(() => {
-                const entry = { number: number.startsWith("+91") ? number : "+91 " + number, operator, amount, date: new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }) };
-                const history = JSON.parse(localStorage.getItem("rechargeHistory")) || [];
-                history.push(entry); localStorage.setItem("rechargeHistory", JSON.stringify(history));
-                loadHistory(); showPaymentModal(entry); form.reset(); updatePlans(); setButtonLoading(false);
-            }, 1000);
-        });
-        document.querySelectorAll('input[name="network"]').forEach(i => { i.addEventListener("change", updatePlans); });
-        planSelect.addEventListener("change", () => { if (planSelect.value) { amountInput.value = planSelect.value; } });
-        historyFilter.addEventListener('input', (e) => { loadHistory(e.target.value); });
-        themeToggle.addEventListener('change', () => { document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light'); });
-        if (localStorage.getItem('theme') === 'dark') { document.body.classList.add('dark-mode'); themeToggle.checked = true; }
-        modalOverlay.addEventListener('click', closeModal);
-
-        // --- Initializations ---
-        updatePlans(); loadClock(); loadHistory(); updateRandomComment(); startCountdown(); setInterval(updateRandomComment, 7000);
-    });
-  </script>
-</body>
-</html>
+            const websiteLink = window.location.hr
